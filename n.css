@@ -1,0 +1,17 @@
+#div{
+    display: flex;
+    flex-wrap: wrap;
+    background-color: aqua;
+    height: 1000px;
+    width: 1000px;
+}
+#btn{
+    background-color: red;
+    gap: 5px;
+    height: 50%;
+    width: 50%;
+}
+#clickBtn{
+    height:25px;
+    
+}
