@@ -7,10 +7,15 @@
     <link rel="stylesheet" href="n.css">
 </head>
 <body>
-    <h1>N-QUEEN</h1>
-
-    <input type="text" id="input" placeholder="Enter the size.....">
-    <label for="input"> <button onclick="vis()" id="clickBtn">VISUALIZE</button></label>
+    <div id="headDiv">
+        <h1 id="heading">N-Queen Visualizer</h1>
+        <div id="inputDiv">
+            <input type="text" id="input" placeholder="Enter board size (1-8)">
+            <button onclick="vis()" id="clickBtn">Visualize</button>
+            <button onclick="resetBoard()" id="resetBtn">Reset Board</button>
+            <div id="msg"></div>
+        </div>
+    </div>
     <script src="n.js"></script>
 </body>
 </html>
