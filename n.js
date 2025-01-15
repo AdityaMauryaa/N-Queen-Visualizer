@@ -4,9 +4,10 @@ let number;
 let numberOfPossibleBoards;
 let ud,ld,r,s,arr;
 let boardsArray=[];
+
 function vis() {
    number = parseInt(document.getElementById("input").value);
-   if (number > 0 && number<9) {
+   if (number > 0 && number<11) {
    s='.'.repeat(number);
     arr=new Array(number).fill(s);
     ld=new Array(2*number-1).fill(1);
@@ -23,9 +24,11 @@ function vis() {
        console.log(boardsArray);
        setBoard(number,numberOfPossibleBoards);
     }
-    else if(number>9){alert("!!! Try with a smaller value")}
+    else if(number>=11){alert("!!! Try with a smaller value")}
     else(alert("Minuimum number of queen shoudl not be 0!!!"))
 }
+
+
 
 function disableBtn(bool){
 
@@ -34,6 +37,7 @@ function disableBtn(bool){
     let clickBtn=document.getElementById("clickBtn");
         clickBtn.disabled=bool;    
 }
+
 
 function solve(arr, j, n) {
     if (j === n) {
@@ -66,21 +70,21 @@ function solve(arr, j, n) {
 }
 
 
-function setBoard(n, i) {
+function setBoard(n,it) {
     let divMain = document.createElement("div");
     divMain.id = "boardContainer";
     divMain.style.marginTop = "20px";
     divMain.style.display = "grid";
     
     // Adjust columns based on the number of boards
-    let columns = Math.ceil(Math.sqrt(i));
+    let columns = Math.ceil(Math.sqrt(it));
     divMain.style.gridTemplateColumns = `repeat(${3}, auto)`;
     divMain.style.gap = "20px";
     
     document.body.appendChild(divMain);
 
-    // Loop through each board
-    for (let t = 0; t < boardsArray.length; t++) {
+
+    for (let t = 0; t <it; t++) {
         let divWrapper = document.createElement("div");
         divWrapper.style.display = "flex";
         divWrapper.style.backgroundImage = "url(./golden-matte-iconic-chess-queen-a-stunning-symbol-on-gold-plate-3d-rendered-for-social-media_9839471.jpg!sw800";
@@ -98,26 +102,26 @@ function setBoard(n, i) {
         divHead.style.marginBottom = "5px"; // Small space between the heading and the board
         divWrapper.appendChild(divHead);
         
-        // Create the board grid
+
         let board = boardsArray[t];
         let div = document.createElement("div");
         div.className = "board";
-        div.style.height = `${50 * n}px`;
-        div.style.width = `${50 * n}px`;
+        div.style.height = `${25 * n}px`;
+        div.style.width = `${25 * n}px`;
         div.style.display = "flex";
         div.style.flexWrap = "wrap";
         div.style.border = "2px solid #333";
-        
+        div.id=`board-${t+1}`;
         divWrapper.appendChild(div);
 
-        // Create cells for each board
         for (let i = 0; i < n; i++) {
             for (let j = 0; j < n; j++) {
                 let cell = document.createElement("div");
                 cell.className = "cell";
-                cell.style.height = "50px";
-                cell.style.width = "50px";
-                // Apply background based on queen placement
+                cell.style.height = "25px";
+                cell.style.width = "25px";
+                cell.id=`board-${t+1}+${i+1}+${j+1}`;
+         
                 if (board[i][j] === 'Q') {
                     cell.style.backgroundImage = "url('./golden-matte-iconic-chess-queen-a-stunning-symbol-on-gold-plate-3d-rendered-for-social-media_9839471.jpg!sw800')";
                     cell.style.backgroundSize = "cover";
